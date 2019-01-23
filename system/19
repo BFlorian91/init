@@ -1,0 +1,32 @@
+
+# COMMAND: ls -l /etc/init.d | cut -c 42- 
+# Des daemons 
+
+alsa-utils
+anacron
+avahi-daemon
+bluetooth
+console-setup.sh
+cron
+cups
+cups-browsed
+dbus
+hddtemp
+hwclock.sh
+keyboard-setup.sh
+kmod
+lightdm
+lm-sensors
+minissdpd
+networking
+network-manager
+pppd-dns
+procps
+rsync
+rsyslog
+saned
+speech-dispatcher
+ssh
+sudo
+udev
+x11-common

@@ -1,0 +1,4 @@
+# -P, don't follow any symbolic links
+# -s, display only a total for each argument
+
+du -sPh /var/*

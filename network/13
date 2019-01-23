@@ -1,0 +1,2 @@
+# COMMAND: ipconfig getifaddr en0 | xargs nslookup | grep name | rev | cut -c 2- | rev | cut -d '=' -f2 | tr -d " "
+e1r7p18.42.fr

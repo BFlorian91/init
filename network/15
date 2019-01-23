@@ -1,0 +1,4 @@
+# https://quick-tutoriel.com/modifier-fichier-hosts-de-mac-os-x/
+# fichier /etc/hosts redirection de l'ip 46.19.. vers le domaine intra.42.fr
+
+46.19.122.85	intra.42.fr
