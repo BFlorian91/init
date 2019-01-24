@@ -1,0 +1,54 @@
+#!/bin/bash
+
+LOG="/var/log/update_script.log"
+START="/etc/init.d"
+CRON="/var/spool/cron/crontabs/root"
+SCRIPT="03"
+
+check_if_file_exist()
+{
+    for x in $1
+    do
+    	if [ $x == $SCRIPT ]
+		then
+			return 1
+		fi
+	done
+	return 0
+}
+
+update()
+{
+    echo -e "\n==============================================\n" >> $LOG
+    
+    date >> $LOG
+	apt update >> $LOG 2>&1 && apt upgrade -y >> $LOG 2>&1
+    echo -e "\n==============================================\n" >> $LOG
+}
+
+check_if_file_exist $START
+ret=$?
+
+if [ $ret -eq 0 ]
+then
+	cp -R $SCRIPT $START
+else
+	continue
+fi
+
+check_if_file_exist $CRON
+ret=$?
+
+if [ $ret -eq 0 ]
+then
+    cp -R /root/init/script/03 /bin 
+	echo "0 4 * * * /bin/03" >> /tmp/tmp_cron.txt
+	echo "0 3 1 * * rm $LOG" >> /tmp/tmp_cron.txt
+    crontab /tmp/tmp_cron.txt
+    rm /tmp/tmp_cron.txt
+    update
+	exit
+else
+	update
+	exit
+fi

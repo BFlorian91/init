@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# $?		contient le code de retour de la derniere operation
+# $0		contient le nom du script
+# $n		contient l'argument n, n etant un nombre
+# $!		contient le PID de la derniere commande lancée
+
+USER_LOG=$(getent passwd | cut -d: -f1)
+
+checkUser()
+{                                                            
+	for u in $USER_LOG
+	do
+		if [ "$u" == "$1" ]
+		then
+			return 0
+		fi
+	done
+	return 1
+}
+
+del_user()
+{
+	USER_DEL=$1
+	killall - KILL -u $USER_DEL > /dev/null 2>&1
+	pkill -KILL -u $USER_DEL > /dev/null 2>&1
+	userdel -r $USER_DEL > /dev/null 2>&1
+	rm -rf /home/$USER_DEL > /dev/null 2>&1
+}
+
+# Check if user is root
+if [ "$EUID" -ne 0 ]
+then 
+	echo "Please run as root"
+	exit
+fi
+
+# Check number of arg
+if [ $# -eq 0 ]
+then
+	echo "USAGE: ./02 user_name"
+	exit
+else
+	USER_DEL=$1
+	checkUser $1
+	ret=$?
+fi
+
+if [ $ret -eq 0 ]
+then
+	if [ $USER_DEL == root ]
+	then
+		echo "ERROR: You can't delete root"
+		exit
+	else
+		del_user $USER_DEL
+		echo "$USER_DEL has been deleted"
+		exit
+	fi
+else
+	echo "Invalid USER"
+fi
