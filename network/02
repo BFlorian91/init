@@ -1,5 +1,6 @@
 # Broadcast address
-ifconfig | grep broadcast | cut -d 't' -f4 | tr -d " "
+
+ifconfig | grep broadcast | cut -d 't' -f4 | tr -d " " 
 
 # All IP
-arp -a | cut -d ')' -f1 | cut -d '(' -f2
+arp -a | cut -d ')' -f1 | cut -d '(' -f2 

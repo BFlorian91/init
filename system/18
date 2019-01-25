@@ -1,1 +1,3 @@
+# systemctl stop ssh OU /etc/init.d/ssh stop
+
 /etc/init.d/ssh stop
