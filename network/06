@@ -1,5 +1,3 @@
-# Récupérez le path complet du fichier dans lequel est écrit l’adresse IP du serveur
-# DNS que vous utilisez
-# Le fichier liste le serveur dns que j'utilise
+# Le fichier liste le serveur dns que j'utilise 
 
 /etc/resolv.conf

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# $?		contient le code de retour de la derniere operation
-# $0		contient le nom du script
-# $n		contient l'argument n, n etant un nombre
-# $!		contient le PID de la derniere commande lancée
-
 USER_LOG=$(getent passwd | cut -d: -f1)
 
 checkUser()
@@ -58,5 +53,5 @@ then
 		exit
 	fi
 else
-	echo "Invalid USER"
+	echo "USER is not logged"
 fi

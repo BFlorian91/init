@@ -1,13 +1,5 @@
-# nslookup 42.fr 8.8.8.8
+# Avec la commande nslookup 42.fr 8.8.8.8 | tail -8 | grep Address
 
-Server:		192.168.1.254
-Address:	192.168.1.254#53
-
-Non-authoritative answer:
-Name:	42.fr
-Address: 163.172.250.12
-Name:	42.fr
 Address: 163.172.250.13
-Name:	42.fr
+Address: 163.172.250.12
 Address: 163.172.250.11
-
